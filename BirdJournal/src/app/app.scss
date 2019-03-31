@@ -14,3 +14,30 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+/*custom Ionicon icon*/
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+    &[class*="custom-quail-icon"] {
+        mask-image: url(../assets/icon/quail-icon.svg);
+    }
+    &[class*="custom-GSP-icon"] {
+      mask-image: url(../assets/icon/GSP.svg);
+    }
+    &[class*="custom-Pointer-icon"] {
+      mask-image: url(../assets/icon/Pointer.svg);
+    }
+    &[class*="custom-map-icon"] {
+      mask-image: url(../assets/icon/map-icon.svg);
+    }
+    &[class*="custom-journal-icon"] {
+      mask-image: url(../assets/icon/journal.svg);
+    }
+}
