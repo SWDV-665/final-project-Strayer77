@@ -40,4 +40,16 @@ ion-icon {
     &[class*="custom-journal-icon"] {
       mask-image: url(../assets/icon/journal.svg);
     }
+    &[class*="custom-pheasantGroup-icon"] {
+      mask-image: url(../assets/icon/pheasant2.svg);
+    }
+    &[class*="custom-pheasant-icon"] {
+      mask-image: url(../assets/icon/pheasant_icon.svg);
+    }
+    &[class*="custom-gsp_left-icon"] {
+      mask-image: url(../assets/icon/gsp_left.svg);
+    }
+    &[class*="custom-gsp_right-icon"] {
+      mask-image: url(../assets/icon/gsp_right.svg);
+    }
 }

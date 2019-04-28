@@ -1,5 +1,7 @@
 {
   "name": "BirdJournal",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

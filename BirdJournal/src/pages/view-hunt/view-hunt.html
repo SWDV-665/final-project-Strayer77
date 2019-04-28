@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>View Hunt: {{ hunt.date }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+            <div class="hunt-date"> {{ hunt.date }}</div>
+        </ion-card-title>
+        <div> {{ hunt.coveysFound }}</div>
+        <div> {{ hunt.birdsTaken }} </div>
+        <div> {{ hunt.content }} </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  <ion-footer>
+    <button ion-button color="danger" block (click)="deleteHunt(hunt.createDate)">
+      Delete Hunt
+    </button>
+  </ion-footer>
+  

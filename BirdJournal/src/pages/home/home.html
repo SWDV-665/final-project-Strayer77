@@ -1,13 +1,51 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Bird Journal</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <h2>Welcome to Bird Journal</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-</ion-content>
+    <ion-navbar>
+      <ion-title>
+        <img alt="logo" height="50" src="../../assets/imgs/Bird Journal-logo.png">
+      </ion-title>
+      <ion-buttons end>
+          <button type="button" ion-button icon-only (click)="addHunt()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let hunt of hunts | async" (click)="getHunt(hunt.createDate)" col-12>
+          <ion-card>
+            <ion-card-header>
+              {{ hunt.date }}
+            </ion-card-header>
+            <ion-card-content>
+              {{ hunt.coveysFound }}
+              <br>
+              {{ hunt.birdsTaken }}
+              <br>
+              {{ hunt.myPhoto }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+      <!--the async will return the results of the promise in the home.ts and 
+      put it in the template here-->
+      <!--<button ion-item *ngFor="let hunt of hunts | async" (click)="getHunt(hunt.createDate)">
+        {{ hunt.date }}
+      </button>-->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3></ion-col>
+        <ion-col col-6>
+          <button ion-button color="blazeorange" (click)="addHunt()">
+            New Hunt
+          </button>
+      </ion-col>
+      <ion-col col-3></ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  
+  
