@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewHuntPage } from '../pages/view-hunt/view-hunt';
 import { Camera } from '@ionic-native/camera';
+import {  File  } from '@ionic-native/file'; 
 
 @NgModule({
   declarations: [

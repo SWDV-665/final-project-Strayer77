@@ -11,7 +11,7 @@
     </ion-item>
     <ion-item>
        <ion-label>Coveys Found</ion-label>
-       <ion-range min="0" max="50" color="secondary" pin="true" formControlName="coveysFound">
+       <ion-range min="0" max="30" color="secondary" pin="true" formControlName="coveysFound">
           <ion-icon small range-left name="custom-pheasantGroup-icon"></ion-icon>
           <ion-icon range-right name="custom-pheasantGroup-icon"></ion-icon>
        </ion-range>
@@ -29,31 +29,41 @@
     </ion-item>
     <ion-item>
        <ion-label>Notes</ion-label>
-       <ion-input type="text" name="content" formControlName ="content"></ion-input>
+       <ion-textarea type="text" name="content" formControlName ="content"></ion-textarea>
        <div class="alert" *ngIf="!formGroup.controls['content'].valid
           && formGroup.controls['content'].touched">{{ contentAlert }}</div>
     </ion-item>
     <ion-grid>
       <ion-row>
          <ion-col col-6>
-            <button type="button" ion-button color="blazeorange"(click)="takePhoto()" full collor="secondary">
+            <button type="button" ion-button color="blazeorange"(click)="takePhoto()" full>
                Take Photo
                <br>
                <ion-icon class="ion-padding-end" name="camera"></ion-icon>
             </button>
          </ion-col>
          <ion-col col-6>
-            <button type="button" ion-button color="blazeorange"(click)="getImage()" full collor="secondary">
+            <button type="button"  ion-button color="blazeorange"(click)="getImage()" full>
                Add Photo
                <br>
                <ion-icon name="image"></ion-icon>
             </button>
          </ion-col>
       </ion-row>
+      <ion-row>
+         <ion-col col-12>
+            <button type="button" ion-button color="blazeorange"(click)="getLocation" full>
+               Geo-location
+               <br>
+               <ion-icon class="ion-padding-end" name="pin"></ion-icon>
+            </button>
+         </ion-col>
+      </ion-row>
     </ion-grid>
+    <br>
+    <br>
     <p><img [src]="myPhoto" *ngIf="myPhoto"></p>
-    <br>
-    <br>
+    <ion-input type="hidden" [value]="myPhoto" formControlName="myPhoto"></ion-input>
     <ion-grid>
       <ion-row>
          <ion-col col-4>

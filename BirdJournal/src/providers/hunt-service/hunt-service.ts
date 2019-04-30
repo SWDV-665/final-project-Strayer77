@@ -10,7 +10,8 @@ export class HuntService {
 
   private hunts: Hunt[] = [];
   hunt: Hunt;
-  private myPhoto;
+  //myPhoto: any;
+
 
   constructor(public storage: Storage, private camera: Camera) {
   }
@@ -61,5 +62,23 @@ export class HuntService {
     });
     this.storage.set('hunts', this.hunts);
   }
+
+  /*getImage() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+    // imageData is either a base64 encoded string or a file URI
+    // If it's base64 (DATA_URL):
+    this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+    return this.myPhoto;
+    }, (err) => {
+    // Handle error
+    });
+  }*/
 
 }

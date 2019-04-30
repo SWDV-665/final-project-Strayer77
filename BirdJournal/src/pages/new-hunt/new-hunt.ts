@@ -4,6 +4,7 @@ import { HuntService } from '../../providers/hunt-service/hunt-service';
 import { Hunt } from '../../models/hunt.model';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -17,10 +18,10 @@ export class NewHuntPage {
   date: Date = new Date();
   coveysFound: number;
   birdsTaken: number;
+  myPhoto: any = '';
   content: string = '';
-  myPhoto: any;
 
-  constructor(public navCtrl: NavController, private huntService: HuntService, private camera: Camera) {
+  constructor(public navCtrl: NavController, private huntService: HuntService, public storage: Storage, private camera: Camera) {
     this.formGroup = new FormGroup({
       content: new FormControl(),
       date: new FormControl(),
@@ -30,18 +31,9 @@ export class NewHuntPage {
     })
   }
 
-  //saves hunts in the new hunt page
-  //invokes the method from the hunt service provider page
-  saveHunt(hunt: Hunt) {
-    this.huntService.saveHunt(hunt);
-    //use navctrl to pop current view off of stack and return to view
-    //below that one on the stack - in this case the home page
-    this.navCtrl.pop();
-  }
-
   getImage() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 80,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       saveToPhotoAlbum: false
@@ -51,6 +43,7 @@ export class NewHuntPage {
     // imageData is either a base64 encoded string or a file URI
     // If it's base64 (DATA_URL):
     this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+    //document.write(this.myPhoto);
     }, (err) => {
     // Handle error
     });
@@ -59,7 +52,7 @@ export class NewHuntPage {
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
@@ -73,6 +66,13 @@ export class NewHuntPage {
     });
   }
 
-  
+  //saves hunts in the new hunt page
+  //invokes the method from the hunt service provider page
+  saveHunt(hunt: Hunt) {
+    this.huntService.saveHunt(hunt);
+    //use navctrl to pop current view off of stack and return to view
+    //below that one on the stack - in this case the home page
+    this.navCtrl.pop();
+  }
   
 }

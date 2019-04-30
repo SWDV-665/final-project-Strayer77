@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HuntService } from '../../providers/hunt-service/hunt-service';
 import { Hunt } from '../../models/hunt.model';
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-view-hunt',
@@ -10,7 +12,6 @@ import { Hunt } from '../../models/hunt.model';
 })
 export class ViewHuntPage {
   hunt: Hunt;
-  myPhoto: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
