@@ -5,6 +5,7 @@ import { Hunt } from '../../models/hunt.model';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 @IonicPage()
@@ -20,15 +21,30 @@ export class NewHuntPage {
   birdsTaken: number;
   myPhoto: any = '';
   content: string = '';
+  myLocation: string ='';
 
-  constructor(public navCtrl: NavController, private huntService: HuntService, public storage: Storage, private camera: Camera) {
+  constructor(public navCtrl: NavController, private huntService: HuntService,
+     public storage: Storage, private camera: Camera,
+     private geolocation: Geolocation) {
     this.formGroup = new FormGroup({
       content: new FormControl(),
       date: new FormControl(),
       coveysFound: new FormControl(),
       birdsTaken: new FormControl(),
-      myPhoto: new FormControl()
+      myPhoto: new FormControl(),
+      myLocation: new FormControl()
     })
+  }
+
+  getLocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+      this.myLocation = 'Latitude: ' + resp.coords.latitude + ' Longitude: ' + resp.coords.longitude;
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
   }
 
   getImage() {

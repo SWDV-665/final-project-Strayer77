@@ -12,7 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewHuntPage } from '../pages/view-hunt/view-hunt';
 import { Camera } from '@ionic-native/camera';
-import {  File  } from '@ionic-native/file'; 
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import {  File  } from '@ionic-native/file';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HuntService,
-    Camera
+    Camera,
+    Geolocation
   ]
 })
 export class AppModule {}

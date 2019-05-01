@@ -4,5 +4,6 @@ export interface Hunt {
     coveysFound: number
     birdsTaken: number
     myPhoto: any
+    myLocation: any
     createDate: number //unique identifier
 }
