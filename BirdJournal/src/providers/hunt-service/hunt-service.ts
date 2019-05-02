@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Hunt } from '../../models/hunt.model';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
+//----------------------------------------------------------------------------------------------------------------------------
 
 @Injectable()
 export class HuntService {
@@ -15,7 +15,7 @@ export class HuntService {
 
   constructor(public storage: Storage, private camera: Camera) {
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   //allows us to save a hunt and pushes it to the array of hunts in storage
   saveHunt(hunt: Hunt){
     hunt.createDate = Date.now(); //creates a unique number representing milliseconds that we use to identify individual hunts
@@ -25,7 +25,7 @@ export class HuntService {
     //(data persistence)
     this.storage.set('hunts', this.hunts);
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   //method to retrieve all hunts
   getAllHunts() {
     //retrieves hunts from storage via get which returns a promise
@@ -38,7 +38,7 @@ export class HuntService {
       }
     )
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   //gets a hunt from our collection of hunts using a key
   //returns a promise and then uses the create date identifier we passed to
   //return the hunt that has the matching createDate identifier
@@ -48,7 +48,7 @@ export class HuntService {
       return this.hunt;
     });
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   //returns the hunts array with all the hunts, except
   //the one that we want to delete by using the unique
   //identifier createDate and comparing those against the 
@@ -62,7 +62,7 @@ export class HuntService {
     });
     this.storage.set('hunts', this.hunts);
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   /*getImage() {
     const options: CameraOptions = {
       quality: 100,

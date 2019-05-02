@@ -3,6 +3,11 @@ page-home {
         text-align: center;
     }
 
+    .toolbar-background {
+        opacity: .98;
+        border-bottom: .75px solid orange;
+      }
+
     ion-title {
         position: absolute;
         top: 0;
@@ -15,7 +20,7 @@ page-home {
     
 
     ion-content {
-        background: url(../assets/imgs/quail_bg.jpg) no-repeat center fixed;
+        background: url(../assets/imgs/chukar_bg.jpg) no-repeat center fixed;
         background-size: cover;
         &:before {
             content: '';
@@ -27,8 +32,20 @@ page-home {
             background-image: linear-gradient(to bottom right, #02362C, #003199);
             opacity: .3;
         }
+
+        ion-card {
+            border: .75px solid orange;
+            opacity: .75;
+        }
+
         button {
             width: 180px;
+        }
+        img {
+            border: .75px solid orange;
+            border-radius: 3%;
+            height: 100%;
+            width: 100%;
         }
     }
 }

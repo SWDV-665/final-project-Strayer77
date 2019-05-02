@@ -1,4 +1,9 @@
 page-new-hunt {
+
+    .toolbar-background {
+        opacity: .98;
+      }
+
     ion-content {
         background: url(../assets/imgs/pheasant_feathers.jpg) no-repeat center fixed;
         background-size: cover;
@@ -13,4 +18,8 @@ page-new-hunt {
             opacity: .5;
         }
     }
+    form {
+        opacity: .98;
+    }
+
 }

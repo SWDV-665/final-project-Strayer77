@@ -11,7 +11,10 @@
     </ion-item>
     <ion-item>
        <ion-label>Coveys Found</ion-label>
-       <ion-range min="0" max="30" color="secondary" pin="true" formControlName="coveysFound">
+       <ion-item>
+         <ion-badge color="secondary">{{coveyNum}}</ion-badge>
+      </ion-item>
+       <ion-range min="0" max="30" color="secondary" pin="true" [(ngModel)]="coveyNum" formControlName="coveysFound">
           <ion-icon small range-left name="custom-pheasantGroup-icon"></ion-icon>
           <ion-icon range-right name="custom-pheasantGroup-icon"></ion-icon>
        </ion-range>
@@ -20,7 +23,7 @@
     </ion-item>
     <ion-item>
        <ion-label>Birds Taken</ion-label>
-       <ion-range min="0" max="50" color="secondary" pin="true" formControlName="birdsTaken">
+       <ion-range min="0" max="50" color="secondary" pin="true" [(ngModel)]="birdNum" formControlName="birdsTaken">
           <ion-icon small range-left name="custom-quail-icon"></ion-icon>
           <ion-icon range-right name="custom-quail-icon"></ion-icon>
        </ion-range>
@@ -28,8 +31,7 @@
           && formGroup.controls['content'].touched">{{ birdsTakenAlert }}</div>
     </ion-item>
     <ion-item>
-       <ion-label>Notes</ion-label>
-       <ion-textarea type="text" name="content" formControlName ="content"></ion-textarea>
+       <ion-textarea type="text" placeholder="Add Note" name="content" formControlName ="content"></ion-textarea>
        <div class="alert" *ngIf="!formGroup.controls['content'].valid
           && formGroup.controls['content'].touched">{{ contentAlert }}</div>
     </ion-item>
@@ -62,7 +64,6 @@
     </ion-grid>
     <br>
     <br>
-    <p *ngIf="myLocation"> {{ myLocation }}</p>
     <p><img [src]="myPhoto" *ngIf="myPhoto"></p>
     <ion-input type="hidden" [value]="myPhoto" formControlName="myPhoto"></ion-input>
     <ion-input type="hidden" [value]="myLocation" formControlName="myLocation"></ion-input>

@@ -6,7 +6,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { ToastController } from 'ionic-angular';
+//----------------------------------------------------------------------------------------------------------------------------
 
 @IonicPage()
 @Component({
@@ -25,28 +26,40 @@ export class NewHuntPage {
 
   constructor(public navCtrl: NavController, private huntService: HuntService,
      public storage: Storage, private camera: Camera,
-     private geolocation: Geolocation) {
+     private geolocation: Geolocation,
+     public toastCtrl: ToastController) {
     this.formGroup = new FormGroup({
       content: new FormControl(),
       date: new FormControl(),
       coveysFound: new FormControl(),
       birdsTaken: new FormControl(),
       myPhoto: new FormControl(),
-      myLocation: new FormControl()
+      myLocation: new FormControl(),
     })
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
+  //this function uses the geolocation native plugin and grabs the users
+  //latitude and longitude and then saves it in the hunt object to be
+  // displayed elsewhere
   getLocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       // resp.coords.latitude
       // resp.coords.longitude
-      this.myLocation = 'Latitude: ' + resp.coords.latitude + ' Longitude: ' + resp.coords.longitude;
+      this.myLocation = resp.coords.latitude + ', ' + resp.coords.longitude;
+      const toast = this.toastCtrl.create({
+        message: 'Saving Coordinates...',
+        duration: 1500,
+      });
+      toast.present();
      }).catch((error) => {
        console.log('Error getting location', error);
      });
 
   }
 
+//----------------------------------------------------------------------------------------------------------------------------
+  //this function allows user to pick image from photo library and then saves it to the 
+  //hunt object as myPhoto in base64 string format
   getImage() {
     const options: CameraOptions = {
       quality: 80,
@@ -64,7 +77,8 @@ export class NewHuntPage {
     // Handle error
     });
   }
-
+//-------------------------------------------------------------------------
+  //this function takes the photo and stores it in the hunt.myPhoto variable as base64
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
@@ -81,7 +95,7 @@ export class NewHuntPage {
      // Handle error
     });
   }
-
+//----------------------------------------------------------------------------------------------------------------------------
   //saves hunts in the new hunt page
   //invokes the method from the hunt service provider page
   saveHunt(hunt: Hunt) {
