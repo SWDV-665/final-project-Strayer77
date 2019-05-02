@@ -23,9 +23,11 @@ page-view-hunt {
     ion-card{
         border: .75px solid orange;
         
-        ion-card-title{
-            text-align: center;
-        }
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        margin: 0 !important;
+        
     }
     
     .notes {
@@ -37,6 +39,12 @@ page-view-hunt {
     .hunt-date {
         border-bottom: 1px solid orange;
         padding-bottom: 10px;
+    }
+    
+    .coords {
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
     }
 
     img {
